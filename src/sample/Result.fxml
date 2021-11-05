@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="1057.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView fitHeight="107.0" fitWidth="92.0" layoutX="57.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../assets/aims_icon.PNG" />
+            </image>
+        </ImageView>
+        <Label layoutX="170.0" layoutY="45.0" style="-fx-font-size: 40; -fx-font-weight: bold;" text="PAYMENT" textFill="#295bda" />
+        <Button layoutX="355.0" layoutY="437.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="348.0" style="-fx-background-color: red; -fx-font-size: 24;" text="OK" textFill="WHITE" />
+        <Label alignment="CENTER" layoutX="337.0" layoutY="268.0" style="-fx-font-size: 40;" text="PAYMENT SUCCESSFUL" textFill="#16aa34" />
+        <Label layoutX="421.0" layoutY="172.0" style="-fx-font-size: 24;" text="NghiaLM-20183960" />
+    </children>
+</AnchorPane>
