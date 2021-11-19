@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1308.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView fitHeight="107.0" fitWidth="92.0" layoutX="57.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../assets/aims_icon.PNG" />
+            </image>
+        </ImageView>
+        <Label layoutX="170.0" layoutY="45.0" style="-fx-font-size: 40; -fx-font-weight: bold;" text="PAYMENT" textFill="#295bda" />
+        <GridPane layoutX="102.0" layoutY="152.0" prefHeight="122.0" prefWidth="315.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label style="-fx-font-size: 24;" text="Payment method" />
+                <RadioButton disable="true" mnemonicParsing="false" selected="true" style="-fx-font-size: 24;" text="Credit Card" GridPane.rowIndex="1" />
+            </children>
+        </GridPane>
+        <Button layoutX="529.0" layoutY="563.0" mnemonicParsing="false" style="-fx-background-color: red; -fx-font-size: 24;" text="CONFIRM PAYMENT" textFill="WHITE" />
+        <Label layoutX="546.0" layoutY="45.0" style="-fx-font-size: 24;" text="NghiaLM-20183960" />
+        <VBox layoutX="606.0" layoutY="134.0" prefHeight="403.0" prefWidth="628.0" spacing="5.0">
+            <children>
+                <Label lineSpacing="5.0" style="-fx-font-size: 24;" text="Card number:" />
+                <TextField prefHeight="52.0" prefWidth="365.0" />
+                <Label style="-fx-font-size: 24;" text="Card holder name:" />
+                <TextField prefHeight="52.0" prefWidth="365.0" />
+                <Label style="-fx-font-size: 24;" text="Expiration date:" />
+                <TextField prefHeight="52.0" prefWidth="365.0" />
+                <Label style="-fx-font-size: 24;" text="Card security code:" />
+                <TextField prefHeight="52.0" prefWidth="365.0" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
