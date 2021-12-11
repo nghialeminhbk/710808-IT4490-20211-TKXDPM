@@ -1,4 +1,9 @@
-package common.exception;
+package common.exception;;
 
-public class InternalServerErrorException {
+public class InternalServerErrorException extends PaymentException {
+
+	public InternalServerErrorException() {
+		super("ERROR: Internal Server Error!");
+	}
+
 }

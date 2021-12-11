@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../:\Thiet_Ke_Xay_Dung_Phan_Mem\AIMS_project_JavaFX\.idea/dataSources/
+/../../../../../:\Thiet_Ke_Xay_Dung_Phan_Mem\aims\AIMS-Student\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/

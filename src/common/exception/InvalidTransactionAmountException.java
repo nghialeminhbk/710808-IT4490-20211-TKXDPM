@@ -1,4 +1,7 @@
-package common.exception;
+package common.exception;;
 
-public class InvalidTransactionAmountException {
+public class InvalidTransactionAmountException extends PaymentException {
+	public InvalidTransactionAmountException() {
+		super("ERROR: Invalid Transaction Amount!");
+	}
 }

@@ -1,4 +1,7 @@
 package common.exception;
 
-public class NotEnoughTransactionInfoException {
+public class NotEnoughTransactionInfoException extends PaymentException {
+public NotEnoughTransactionInfoException() {
+	super("ERROR: Not Enough Transcation Information");
+}
 }
