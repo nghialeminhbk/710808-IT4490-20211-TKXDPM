@@ -4,7 +4,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 /**
- * @author nguyenlm Contains the configs for AIMS Project
+ * @author Nghia_LM Contains the configs for AIMS Project
  */
 public class Configs {
 
@@ -61,4 +61,6 @@ public class Configs {
 			"Phú Yên", "Quảng Nam", "Quảng Ngãi", "Đà Nẵng", "Bà Rịa-Vũng Tàu", "Bình Dương", "Bình Phước", "Đồng Nai",
 			"Tây Ninh", "Hồ Chí Minh", "An Giang", "Bạc Liêu", "Bến Tre", "Cà Mau", "Đồng Tháp", "Hậu Giang",
 			"Kiên Giang", "Long An", "Sóc Trăng", "Tiền Giang", "Trà Vinh", "Vĩnh Long", "Cần Thơ" };
+	public static String[] PROVINCES_SUPPORT_RUSH_ORDER = {"Hà Nội", "Đà Nẵng", "Hồ Chí Minh"};
 }
+

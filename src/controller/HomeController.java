@@ -8,7 +8,7 @@ import entity.media.Media;
 
 /**
  * This class controls the flow of events in homescreen
- * @author nguyenlm
+ * @author Nghia_LM
  */
 public class HomeController extends BaseController{
 
