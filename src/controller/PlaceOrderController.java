@@ -3,17 +3,14 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 import java.util.logging.Logger;
 
 import entity.cart.Cart;
 import entity.cart.CartMedia;
-import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
 import entity.order.OrderMedia;
-import views.screen.popup.PopupScreen;
+import entity.order.RushInfo;
 
 /**
  * This class controls the flow of place order usecase in our AIMS project
@@ -151,9 +148,17 @@ public class PlaceOrderController extends BaseController{
      * @return shippingFee
      */
     public int calculateShippingFee(Order order){
-        Random rand = new Random();
-        int fees = (int)( ( (rand.nextFloat()*10)/100 ) * order.getAmount() );
-        LOGGER.info("Order Amount: " + order.getAmount() + " -- Shipping Fees: " + fees);
-        return fees;
+
+        return new ShippingStrategyWithWeight().calculateShippingFee(order);
+    }
+
+    /**
+     * add rush info to order
+     *
+     * @param order    order to rush
+     * @param rushInfo rush info
+     */
+    public void addRushInfo(Order order, RushInfo rushInfo){
+        order.setRushInfo(rushInfo);
     }
 }

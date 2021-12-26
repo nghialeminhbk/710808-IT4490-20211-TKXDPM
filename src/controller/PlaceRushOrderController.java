@@ -33,7 +33,7 @@ public class PlaceRushOrderController {
      * @param info
      * @return value validate
      */
-    public boolean validateRushOrderInfo(String info) {
+    public static boolean validateRushOrderInfo(String info) {
         if (info == null || info.length() == 0) return false;
         for (char c: info.toCharArray()) {
             if (c ==' ' || c==',' || Character.isLetter(c) || c=='.') {
@@ -49,7 +49,7 @@ public class PlaceRushOrderController {
      * @param instruction
      * @return value validate instruction
      */
-    public boolean validateInstruction(String instruction) {
+    public static boolean validateInstruction(String instruction) {
         if (instruction == null || instruction.length() == 0) return false;
         for (char c: instruction.toCharArray()) {
             if (c ==' ' || c==',' || Character.isLetter(c) || c=='.') {
@@ -65,9 +65,9 @@ public class PlaceRushOrderController {
      * @param receiveTime
      * @return
      */
-    public boolean validateReceiveTime(String receiveTime) {
+    public static boolean validateReceiveTime(String receiveTime) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm");
             LocalDateTime time = LocalDateTime.parse(receiveTime, formatter);
             return true;
         } catch (Exception e) {

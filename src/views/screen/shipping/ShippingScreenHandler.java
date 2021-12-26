@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import controller.PaymentController;
 import controller.PlaceOrderController;
 import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
@@ -16,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -23,8 +25,9 @@ import utils.Configs;
 import views.screen.BaseScreenHandler;
 import views.screen.invoice.InvoiceScreenHandler;
 import views.screen.popup.PopupScreen;
+import views.screen.rush.RushScreenHandler;
 
-public class ShippingScreenHandler extends BaseScreenHandler implements Initializable {
+public class ShippingScreenHandler extends BaseScreenHandler implements Initializable{
 
 	@FXML
 	private Label screenTitle;
@@ -44,27 +47,30 @@ public class ShippingScreenHandler extends BaseScreenHandler implements Initiali
 	@FXML
 	private ComboBox<String> province;
 
+	@FXML
+	private RadioButton rushCheck;
+
 	private Order order;
 
-	public ShippingScreenHandler(Stage stage, String screenPath, Order order) throws IOException {
+	public ShippingScreenHandler(Stage stage, String screenPath, Order order) throws IOException{
 		super(stage, screenPath);
 		this.order = order;
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1){
 		final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
-		name.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                content.requestFocus(); // Delegate the focus to container
-                firstTime.setValue(false); // Variable value changed for future references
-            }
-        });
+		name.focusedProperty().addListener((observable, oldValue, newValue) -> {
+			if(newValue && firstTime.get()){
+				content.requestFocus(); // Delegate the focus to container
+				firstTime.setValue(false); // Variable value changed for future references
+			}
+		});
 		this.province.getItems().addAll(Configs.PROVINCES);
 	}
 
 	@FXML
-	void submitDeliveryInfo(MouseEvent event) throws IOException, InterruptedException, SQLException {
+	void submitDeliveryInfo(MouseEvent event) throws IOException, InterruptedException{
 
 		// add info to messages
 		HashMap messages = new HashMap<>();
@@ -73,26 +79,34 @@ public class ShippingScreenHandler extends BaseScreenHandler implements Initiali
 		messages.put("address", address.getText());
 		messages.put("instructions", instructions.getText());
 		messages.put("province", province.getValue());
-		try {
+		try{
 			// process and validate delivery info
 			getBController().processDeliveryInfo(messages);
-		} catch (InvalidDeliveryInfoException e) {
+		}catch(InvalidDeliveryInfoException e){
 			throw new InvalidDeliveryInfoException(e.getMessage());
 		}
-	
+
 		// calculate shipping fees
 		int shippingFees = getBController().calculateShippingFee(order);
 		order.setShippingFees(shippingFees);
 		order.setDeliveryInfo(messages);
-		
+
 		// create invoice screen
 		Invoice invoice = getBController().createInvoice(order);
-		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, Configs.INVOICE_SCREEN_PATH, invoice);
-		InvoiceScreenHandler.setPreviousScreen(this);
-		InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
-		InvoiceScreenHandler.setScreenTitle("Invoice Screen");
-		InvoiceScreenHandler.setBController(getBController());
-		InvoiceScreenHandler.show();
+
+		if(rushCheck.isSelected()){
+			BaseScreenHandler rushScreen = new RushScreenHandler(this.stage, Configs.RUSH_SCREEN_PATH);
+			//pass invoice to handler
+			((RushScreenHandler) rushScreen).setInvoice(invoice);
+			rushScreen.setBController(new PaymentController());
+			rushScreen.setPreviousScreen(this);
+			rushScreen.setHomeScreenHandler(homeScreenHandler);
+			rushScreen.setScreenTitle("Rush Information");
+			rushScreen.show();
+		}else{
+			goToInvoice(invoice);
+		}
+
 	}
 
 	public PlaceOrderController getBController(){
@@ -101,6 +115,16 @@ public class ShippingScreenHandler extends BaseScreenHandler implements Initiali
 
 	public void notifyError(){
 		// TODO: implement later on if we need
+	}
+
+	public void goToInvoice(Invoice invoice) throws IOException{
+		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, Configs.INVOICE_SCREEN_PATH,
+				invoice);
+		InvoiceScreenHandler.setPreviousScreen(this);
+		InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
+		InvoiceScreenHandler.setScreenTitle("Invoice Screen");
+		InvoiceScreenHandler.setBController(getBController());
+		InvoiceScreenHandler.show();
 	}
 
 }

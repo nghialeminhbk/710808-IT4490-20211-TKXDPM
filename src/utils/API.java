@@ -91,6 +91,7 @@ public class API {
 		// phan 1: setup
 		String payload = data;
 		LOGGER.info("Request Info:\nRequest URL: " + url + "\n" + "Payload Data: " + payload + "\n");
+		allowMethods("PATCH");
 		HttpURLConnection conn = setupConnection(url, null , "PATCH");
 
 		// phan 2: gui du lieu

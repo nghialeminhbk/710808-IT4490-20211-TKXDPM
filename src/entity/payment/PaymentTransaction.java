@@ -2,13 +2,22 @@ package entity.payment;
 
 public class PaymentTransaction {
 	private String errorCode;
-	private CreditCard card;
+	private PaymentCard card;
 	private String transactionId;
 	private String transactionContent;
 	private int amount;
 	private String createdAt;
-	
-	public PaymentTransaction(String errorCode, CreditCard card, String transactionId, String transactionContent,
+
+	/**
+	 * constructor NghiaLM
+	 * @param errorCode
+	 * @param card
+	 * @param transactionId
+	 * @param transactionContent
+	 * @param amount
+	 * @param createdAt
+	 */
+	public PaymentTransaction(String errorCode, PaymentCard card, String transactionId, String transactionContent,
 			int amount, String createdAt) {
 		super();
 		this.errorCode = errorCode;
