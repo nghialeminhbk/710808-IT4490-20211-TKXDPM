@@ -15,7 +15,7 @@ class ValidateMediaSupportPlaceTest {
 		placeRushOrderController = new PlaceRushOrderController();
 	}
 
-	@//gia su chi co 10 11 12 13 14support place rush order
+	//gia su chi co 10 11 12 13 14support place rush order
 	@ParameterizedTest
 	@CsvSource({
 			"10,true",
