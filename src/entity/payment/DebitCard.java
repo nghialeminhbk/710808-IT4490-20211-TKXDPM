@@ -1,5 +1,8 @@
 package entity.payment;
 
+/**
+ * @author NghiaLM
+ */
 public class DebitCard extends PaymentCard{
     private String issuingBank;
     private String cardNumber;

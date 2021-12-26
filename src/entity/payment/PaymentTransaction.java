@@ -7,7 +7,6 @@ public class PaymentTransaction {
 	private String transactionContent;
 	private int amount;
 	private String createdAt;
-
 	/**
 	 * constructor NghiaLM
 	 * @param errorCode

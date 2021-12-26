@@ -75,7 +75,7 @@
                                 <Insets bottom="20.0" />
                             </VBox.margin>
                         </DatePicker>
-                        <TextArea fx:id="instructionInput" prefHeight="200.0" prefWidth="200.0" text="SONNH" />
+                        <TextArea fx:id="instructionInput" prefHeight="200.0" prefWidth="200.0" text="NghiaLM 20183960" />
                     </children>
                 </VBox>
             </children>
